@@ -1,0 +1,7 @@
+{
+  "name": "persiscal_i",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
