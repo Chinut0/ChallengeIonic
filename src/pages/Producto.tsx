@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Services, iProducts } from '../backend/Services'
-import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonLoading, IonPage, IonRefresher, IonRefresherContent, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonLoading, IonPage, IonRefresher, IonRefresherContent, IonRow, IonText, IonTitle, IonToolbar, useIonViewDidEnter, useIonViewDidLeave } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 import { useIonRouter } from "@ionic/react";
 import { RefresherEventDetail } from '@ionic/core';
@@ -12,6 +12,7 @@ interface iParams {
 const Producto = () => {
     const [product, setProduct] = useState<iProducts | undefined>()
     const [loading, setLoading] = useState<boolean>(true)
+    const [load, setLoad] = useState(true)
 
     const params: iParams = useParams();
     const router = useIonRouter();
@@ -22,14 +23,18 @@ const Producto = () => {
             const p = await new Services().queryProduct(params.id)
             typeof (p) !== 'undefined' && setProduct(p)
             setLoading(false)
+            setLoad(false)
         } catch (e) {
             console.log(e);
         }
     }
 
     useEffect(() => {
-        queryProduct()
-    }, [])
+        load && queryProduct()
+    }, [load])
+
+    useIonViewDidLeave(() => setProduct(undefined));
+    useIonViewDidEnter(() => setLoad(true));
 
     const handleEdit = () => router.push("/edit/" + product?.id);
 

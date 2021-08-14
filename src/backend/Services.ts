@@ -21,7 +21,6 @@ export class Services {
     async query(method: "get" | "post" | "put" | "delete", route: string, body?: any) {
         let token = localStorage.getItem('backToken')
         let url = process.env.REACT_APP_API_URL + 'api/' + route
-        console.log(token);
 
         let config
         if (method === 'post') {

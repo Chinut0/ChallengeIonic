@@ -3,13 +3,13 @@ import { Services } from '../backend/Services';
 import firebase from 'firebase'
 
 const config = {
-    apiKey: process.env.APIKEY,
-    authDomain: process.env.AUTHDOMAIN,
-    projectId: process.env.PROYECTID,
-    storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.MESSAGINGSENDERID,
-    appId: process.env.APPID,
-    measurementId: process.env.MEASUREMENTID,
+    apiKey: "AIzaSyCUZkVRVwmX1jzi_GleaIudBTc0gAytvrM",
+    authDomain: "challenge-daf61.firebaseapp.com",
+    projectId: "challenge-daf61",
+    storageBucket: "challenge-daf61.appspot.com",
+    messagingSenderId: "115879031064",
+    appId: "1:115879031064:web:43fb6c65c06fb80c5bae6d",
+    measurementId: "G-7LN6XDL7Y8"
 };
 
 firebase.initializeApp(config)

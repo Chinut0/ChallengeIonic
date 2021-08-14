@@ -10,8 +10,8 @@ const Login = () => {
     const { loginUser, registerUser } = useAuth()
 
     //Login Firebase
-    const [email, setEmail] = useState('hernan.capanegra@gmail.com')
-    const [password, setPassword] = useState('qweqwe')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     //Registrar Firebase
     const [rEmail, setREmail] = useState('')
@@ -61,10 +61,10 @@ const Login = () => {
                             message={'Cargando...'}
                         />
                         <IonItem>
-                            <IonInput type='text' placeholder='email' value='hernan.capanegra@gmail.com' onIonChange={(e: any) => setEmail(e.target.value)}></IonInput>
+                            <IonInput type='text' placeholder='email' onIonChange={(e: any) => setEmail(e.target.value)}></IonInput>
                         </IonItem>
                         <IonItem>
-                            <IonInput type='password' placeholder='password' value='qweqwe' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
+                            <IonInput type='password' placeholder='password' onIonChange={(e: any) => setPassword(e.target.value)}></IonInput>
                         </IonItem>
                         <IonButton color="secondary" expand="full" fill="solid" type='submit' onClick={handleLogin}>Aceptar</IonButton>
                         <div style={{ textAlign: 'right' }} onClick={() => setShowLogin(!showLogin)}>Ir a nuevo usuario</div>

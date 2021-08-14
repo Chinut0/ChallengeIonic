@@ -85,7 +85,6 @@ const Nuevo = () => {
                             id='status'
                             multiple={false}
                             title='asdf'
-                            value="no disponible"
                         >
                             <IonSelectOption value="no disponible">No Disponible</IonSelectOption>
                             <IonSelectOption value="disponible">Disponible</IonSelectOption>

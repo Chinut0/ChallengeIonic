@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Services, iProducts } from '../backend/Services'
-import { IonAvatar, IonBackButton, IonBackdrop, IonButton, IonButtons, IonCol, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonLoading, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSelect, IonSelectOption, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { GrNext } from "react-icons/gr";
-import { IoExitOutline } from "react-icons/io5";
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonLoading, IonPage, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
 import { useIonRouter } from "@ionic/react";
-import { useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
-import { RefresherEventDetail } from '@ionic/core';
-import { add, camera } from 'ionicons/icons'
 import $ from 'jquery'
 import { useParams } from 'react-router-dom';
 
@@ -46,21 +41,12 @@ const Edit = () => {
             $('#description').val(product.description)
             $('#quantity').val(product.quantity)
             $('#price').val(product.price)
+            $('#status').val(product.status)
             setCargarDatos(false)
         }
     }, [product])
 
     const margin = { marginBottom: '10px' }
-
-    const openFileDialog = () => {
-        (document as any).getElementById("image").click();
-    };
-
-    const setImage = (_event: any) => {
-        let f = _event.target.files![0];
-        console.log(f)
-        setImagen(f)
-    }
 
     const handleUploadPhoto = async (fileChangeEvent: any) => {
         setImagen(fileChangeEvent.target.files[0]);
@@ -136,8 +122,6 @@ const Edit = () => {
                         <IonSelect
                             id='status'
                             multiple={false}
-                            title='asdf'
-                            value="no disponible"
                         >
                             <IonSelectOption value="no disponible">No Disponible</IonSelectOption>
                             <IonSelectOption value="disponible">Disponible</IonSelectOption>
